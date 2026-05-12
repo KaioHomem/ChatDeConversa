@@ -1,0 +1,17 @@
+{
+    "port": 51001,
+    "admin_user": "admin",
+    "admin_pass": "filial2",
+    "id": [
+        "sensor_light_entrance",
+        "sensor_light_storage",
+        "sensor_light_mainroom",
+        "actuator_light_entrance",
+        "actuator_light_storage",
+        "actuator_light_mainroom",
+        "sensor_ac_mainroom",
+        "sensor_ac_storage",
+        "actuator_ac_mainroom",
+        "actuator_ac_storage"
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "port": 51000,
+    "admin_user": "admin",
+    "admin_pass": "filial1",
+    "id": [
+        "sensor_light_lobby",
+        "sensor_light_meetroom",
+        "sensor_light_office",
+        "actuator_light_lobby",
+        "actuator_light_meetroom",
+        "actuator_light_office",
+        "sensor_ac_lobby",
+        "sensor_ac_meetroom",
+        "actuator_ac_lobby",
+        "actuator_ac_meetroom"
+    ]
+}
