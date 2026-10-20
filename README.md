@@ -1,43 +1,38 @@
+<img src=".github/cover.png" width="100%" alt="ChatDeConversa: chat multi-protocolo em Python com multicast UDP, transferência de arquivos e IoT, com interface em Tkinter.">
+
 # ChatDeConversa
 
-Aplicação de chat multi-protocolo desenvolvida em Python como projeto prático do curso de Ciências da Computação no IFSC.
+Aplicação de chat multi-protocolo em Python, feita como projeto prático do curso de Ciências da Computação no IFSC.
 
-## Sobre o projeto
+O app principal é um chat em grupo sobre **UDP multicast** com interface em **Tkinter**: cada pessoa entra com um nome, no grupo `239.255.0.1`, porta `5000`, e as mensagens chegam para todo mundo da rede local. Os outros módulos exploram mais dois protocolos: **transferência de arquivos** cliente/servidor e um par cliente/servidor de **IoT** configurado por filial.
 
-O **ChatDeConversa** é uma aplicação de mensagens construída com Python puro, estruturada em módulos independentes para suportar diferentes protocolos de comunicação.
+## Módulos
 
-## Estrutura
-
-```
-ChatDeConversa/
-├── chat/           # Lógica principal do chat
-├── ftp/            # Módulo de transferência via FTP
-├── iot/            # Módulo de integração IoT
-├── MainChat.py     # Ponto de entrada da aplicação
-└── README.md
-```
+| Pasta | O que faz |
+| :-- | :-- |
+| `MainChat.py` | Ponto de entrada: chat multicast com interface Tkinter, threads para receber mensagens. |
+| `chat/` | `ChatApp.py`, a lógica do chat. |
+| `ftp/` | `FileServer.py` e `FileClient.py`, envio e recebimento de arquivos por socket. |
+| `iot/` | `IoTServer.py` e `IoTClient.py`, com configurações por filial em JSON. |
 
 ## Tecnologias
 
-- **Python** — linguagem principal
-- - **FTP** — protocolo de transferência de arquivos
-  - - **IoT** — integração com dispositivos
-   
-    - ## Como executar
-   
-    - ```bash
-      # Clone o repositório
-      git clone https://github.com/KaioHomem/ChatDeConversa.git
-      cd ChatDeConversa
+- **Python** com a biblioteca padrão: `socket`, `threading`, `json`, `tkinter`
+- **UDP multicast** para o chat em grupo
+- **TCP** para a transferência de arquivos e **UDP** para o módulo IoT
 
-      # Execute
-      python MainChat.py
-      ```
+## Como executar
 
-      ## Autor
+```bash
+git clone https://github.com/KaioHomem/ChatDeConversa.git
+cd ChatDeConversa
+python MainChat.py
+```
 
-      **Kaio Felipe Homem** — [GitHub](https://github.com/KaioHomem) · [Portfolio](https://kaiohomem.github.io)
+Abra em duas máquinas (ou dois terminais) na mesma rede, conecte no mesmo grupo e porta, e converse.
 
-      ---
+## Autor
 
-      Projeto acadêmico — IFSC, Ciências da Computação
+**Kaio Felipe Homem** · [Portfólio](https://kaiohomem.github.io) · [GitHub](https://github.com/KaioHomem)
+
+<sub>Projeto acadêmico · IFSC · Ciências da Computação</sub>
