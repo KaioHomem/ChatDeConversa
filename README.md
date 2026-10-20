@@ -1,41 +1,49 @@
-<img src=".github/cover.png" width="100%" alt="ChatDeConversa: chat multi-protocolo em Python com multicast UDP, transferência de arquivos e IoT, com interface em Tkinter.">
+<div align="center">
+
+**English** · [Português (Brasil)](README.pt-BR.md)
+
+</div>
+
+<img src=".github/cover.png" width="100%" alt="ChatDeConversa: a multi-protocol Python chat with UDP multicast, file transfer and IoT, and a WhatsApp-style Tkinter interface.">
 
 # ChatDeConversa
 
-Aplicação de chat multi-protocolo em Python, feita como projeto prático do curso de Ciências da Computação no IFSC.
+A multi-protocol chat application in Python, built as a hands-on project for the Computer Science program at IFSC (Federal Institute of Santa Catarina, Brazil).
 
-O app principal é um chat em grupo sobre **UDP multicast** com interface no **estilo WhatsApp**, feita em **Tkinter**: tela de entrada com nome, grupo e porta, e uma conversa com balões, nome colorido de cada pessoa, horário e os dois checks azuis quando a sua mensagem chega no grupo. Não tem servidor: cada mensagem vai direto para todo mundo da rede local que entrou no mesmo grupo (padrão `239.255.0.1`, porta `5000`). Os outros módulos exploram mais dois protocolos: **transferência de arquivos** cliente/servidor e um par cliente/servidor de **IoT** configurado por filial.
+The main app is a group chat over **UDP multicast** with a **WhatsApp-style** interface built in **Tkinter**: an entry screen with name, group and port, and a conversation view with bubbles, a colour per sender, timestamps and blue double checks once your message reaches the group. There is no server: each message goes straight to everyone on the local network who joined the same group (default `239.255.0.1`, port `5000`). The other modules explore two more protocols: client/server **file transfer** and an **IoT** client/server pair configured per branch office.
 
 <p align="center">
-  <img src="docs/login.png" width="38%" alt="Tela de entrada do ChatDeConversa: nome, grupo multicast e porta, com botão verde Entrar no grupo.">
+  <img src="docs/login.png" width="38%" alt="ChatDeConversa entry screen: name, multicast group and port, with a green Join group button.">
   &nbsp;
-  <img src="docs/chat.png" width="38%" alt="Conversa em grupo no estilo WhatsApp: balões cinza de outras pessoas com nome colorido, balões verdes enviados com horário e dois checks azuis.">
+  <img src="docs/chat.png" width="38%" alt="WhatsApp-style group chat: grey bubbles from other people with coloured names, green sent bubbles with timestamps and blue double checks.">
 </p>
 
-### Como funciona a interface
+<sub>The interface text is in Portuguese.</sub>
 
-- **Balões** desenhados num `Canvas`, com cantos arredondados e a pontinha do lado de quem enviou.
-- **Dois checks azuis**: cada mensagem leva um `id`; quando o eco do multicast volta para quem enviou, o ✓ vira ✓✓.
-- **Thread-safe**: a thread de rede só coloca o que chega numa `queue.Queue`; a interface lê a fila com `after()`, sem tocar no Tkinter fora da thread principal.
-- **Compatível** com o formato antigo de mensagem (`date`, `time`, `username`, `message`): os campos novos (`id`, `client`) são opcionais.
-- **Nítido em telas com escala** (Windows com 125% ou 150%).
+### How the interface works
 
-## Módulos
+- **Bubbles** drawn on a `Canvas`, with rounded corners and a tail on the sender's side.
+- **Blue double checks**: every message carries an `id`; when the multicast echo comes back to the sender, ✓ turns into ✓✓.
+- **Thread-safe**: the network thread only puts incoming messages on a `queue.Queue`; the UI drains the queue with `after()` and never touches Tkinter from another thread.
+- **Backward compatible** with the old message format (`date`, `time`, `username`, `message`); the new fields (`id`, `client`) are optional.
+- **Sharp on scaled displays** (Windows at 125% or 150%).
 
-| Pasta | O que faz |
+## Modules
+
+| Folder | What it does |
 | :-- | :-- |
-| `MainChat.py` | Ponto de entrada: abre o chat. |
-| `chat/` | `ChatApp.py`: interface estilo WhatsApp e a rede multicast (envio, recepção em thread, confirmação de entrega). |
-| `ftp/` | `FileServer.py` e `FileClient.py`, envio e recebimento de arquivos por socket. |
-| `iot/` | `IoTServer.py` e `IoTClient.py`, com configurações por filial em JSON. |
+| `MainChat.py` | Entry point: opens the chat. |
+| `chat/` | `ChatApp.py`: the WhatsApp-style UI and the multicast networking (sending, threaded receiving, delivery checks). |
+| `ftp/` | `FileServer.py` and `FileClient.py`, sending and receiving files over sockets. |
+| `iot/` | `IoTServer.py` and `IoTClient.py`, with per-branch JSON configs. |
 
-## Tecnologias
+## Technologies
 
-- **Python** só com a biblioteca padrão: `socket`, `threading`, `queue`, `json`, `tkinter`
-- **UDP multicast** para o chat em grupo
-- **TCP** para a transferência de arquivos e **UDP** para o módulo IoT
+- **Python** with the standard library only: `socket`, `threading`, `queue`, `json`, `tkinter`
+- **UDP multicast** for the group chat
+- **TCP** for file transfer and **UDP** for the IoT module
 
-## Como executar
+## Running it
 
 ```bash
 git clone https://github.com/KaioHomem/ChatDeConversa.git
@@ -43,10 +51,10 @@ cd ChatDeConversa
 python MainChat.py
 ```
 
-Abra em duas máquinas (ou dois terminais) na mesma rede, conecte no mesmo grupo e porta, e converse.
+Open it on two machines (or two terminals) on the same network, join the same group and port, and chat.
 
-## Autor
+## Author
 
-**Kaio Felipe Homem** · [Portfólio](https://kaiohomem.github.io) · [GitHub](https://github.com/KaioHomem)
+**Kaio Felipe Homem** · [Portfolio](https://kaiohomem.github.io) · [GitHub](https://github.com/KaioHomem)
 
-<sub>Projeto acadêmico · IFSC · Ciências da Computação</sub>
+<sub>Academic project · IFSC · Computer Science</sub>
